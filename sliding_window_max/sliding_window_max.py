@@ -4,8 +4,19 @@ Returns: a List of integers
 '''
 def sliding_window_max(nums, k):
     # Your code here
+    slide = []
+    numbers = []
+    for i in range(len(nums)):
+        if k > 0:
+            k -= 1
+        else:
+            del slide[0]
+        slide.append(nums[i])
 
-    pass
+        if k == 0:
+            numbers.append(max(slide))
+
+    return numbers
 
 
 if __name__ == '__main__':
