@@ -6,15 +6,24 @@ def sliding_window_max(nums, k):
     # Your code here
     slide = []
     numbers = []
+    current_max = 0
+    check_num = 0
+
     for i in range(len(nums)):
+        if nums[i] > current_max:
+            current_max = nums[i]
+        slide.append(nums[i])
+
         if k > 0:
             k -= 1
         else:
+            check_num = slide[0]
             del slide[0]
-        slide.append(nums[i])
+            if check_num == current_max:
+                current_max = max(slide)
 
         if k == 0:
-            numbers.append(max(slide))
+            numbers.append(current_max)
 
     return numbers
 
